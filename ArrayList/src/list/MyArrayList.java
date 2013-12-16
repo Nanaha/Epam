@@ -28,13 +28,13 @@ public class MyArrayList <T extends Comparable<T> > {
 	}
 	
 	private void resize(int to) {
-		if (to >= this.size) {
+		if (to <= this.capacity) {
 			return;
 		}
 		capacity       = to;
-		Object[] temp  = array;
-		array          = new Object[capacity];
-		copy(temp, 0, array, 0, size);
+		Object[] temp  = new Object[capacity];
+		copy(array, 0, temp, 0, size);
+		array = temp;
 	}
 	
 	public void add(T item) {
